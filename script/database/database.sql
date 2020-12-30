@@ -1,10 +1,12 @@
 --创建数据库
 CREATE DATABASE IF NOT EXISTS wuxin DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 --创建用户
-create user 'lhx'@'localhost' identified by '1234';
+--delete mysql.user where user = 'lhx';
+create user 'lhx'@'%' identified by '1234';
+
 select user,host from mysql.user;
 --用户授权数据库
-grant all privileges on 'wuxin'.* to 'lhx'@'%' identified by '1234'; 
+grant all privileges on wuxin.* to 'lhx'@'%';
 --刷新权限
 flush privileges; 
 --授予用户“test”通过外网IP对于该数据库“testdb”中表的创建、修改、删除权限,以及表数据的增删查改权限
